@@ -23,11 +23,12 @@
       "ente-auth"
       "excalidrawz"
       "aldente"
-      "istat-menus"
+      "cloudflare-warp"
     ];
     masApps = {
       "TestFlight" = 899247664;
       "Xcode" = 497799835;
+      "Whatsapp Messenger" = 310633997;
     };
 
     # https://nix-darwin.github.io/nix-darwin/manual/index.html#opt-homebrew.onActivation.cleanup
