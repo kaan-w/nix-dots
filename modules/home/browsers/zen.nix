@@ -1,23 +1,25 @@
-{ lib, pkgs, inputs, ... }: {
-  imports = [
-    inputs.zen-browser.homeModules.beta
-  ];
+{ inputs, ... }: {
+  flake.modules.homeManager.zen = { pkgs, lib, ... }: {
+    imports = [
+      inputs.zen-browser.homeModules.beta
+    ];
 
-  programs.zen-browser = {
-    enable = true;
-    package = lib.mkIf pkgs.stdenv.isDarwin (lib.mkForce null);
+    programs.zen-browser = {
+      enable = true;
+      package = lib.mkIf pkgs.stdenv.isDarwin (lib.mkForce null);
 
-    policies = import ./config/policies.nix;
+      policies = import ./shared/_policies.nix;
 
-    profiles."default" = {
-      name = "default";
-      id = 0;
-      isDefault = true;
+      profiles."default" = {
+        name = "default";
+        id = 0;
+        isDefault = true;
 
-      extensions = import ./config/extensions.nix { inherit pkgs; };
-      settings = import ./config/settings.nix;
-      search = import ./config/search.nix;
-      bookmarks = import ./config/bookmarks.nix;
+        extensions = import ./shared/_extensions.nix { inherit pkgs inputs; };
+        settings = import ./shared/_settings.nix;
+        search = import ./shared/_search.nix;
+        bookmarks = import ./shared/_bookmarks.nix;
+      };
     };
   };
 }

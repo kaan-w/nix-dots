@@ -1,62 +1,67 @@
-{ pkgs, self', ... }: {
-  programs.vscode = {
-    enable = true;
-    profiles.default.extensions = with pkgs.vscode-extensions; [
-      jnoortheen.nix-ide
-      pkief.material-icon-theme
-      rust-lang.rust-analyzer
-      golang.go
-      mkhl.direnv
-      github.vscode-github-actions
-      tamasfe.even-better-toml
-      unifiedjs.vscode-mdx
-      astro-build.astro-vscode
-      ms-python.python
-      ms-vscode.cpptools-extension-pack
-      bierner.github-markdown-preview
-      ziglang.vscode-zig
-      ms-vscode.cpptools
-      self'.packages.vscode-pdf    
-      self'.packages.vscode-moegi-theme
-      self'.packages.vscode-image-preview
-    ];
-    profiles.default.userSettings = {
-      "workbench.colorTheme" = "Moegi Dark Vitesse";
-      "workbench.iconTheme" = "material-icon-theme";
-      "workbench.editor.empty.hint" = "hidden";
-      "update.mode" = "none";
-      "editor.tabSize" = 2;
-      "editor.minimap.enabled" = false;
-      "editor.fontFamily" = "JetBrainsMono Nerd Font";
-      "editor.fontLigatures" = "'calt', 'zero'"; 
-      "explorer.compactFolders" = false;
-      "window.titleBarStyle" = "custom";
-      "markdown-preview-github-styles.colorTheme" = "light";
-      "python.languageServer" = "Pylance";      
-      "rust-analyzer.inlayHints.parameterHints.enable" = false;
-      "zig.zls.enabled" = "on";
-      "gutterpreview.showImagePreviewOnGutter" = false;
-      "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nixd";
-      "nix.serverSettings.nixd" = { 
-        "formatting.command" = ["alejandra"];
-        "nixpkgs.expr" = "import <nixpkgs> {}";
-        "options" = {
-          "nixos" = {
-            "expr" = "(builtins.getFlake \"github:kaan-w/nix-dotfiles\").nixosConfigurations.nixos.options";
+{ config, ... }: {
+  flake.modules.homeManager.vscode = { pkgs, ... }: let
+    system = pkgs.stdenv.hostPlatform.system;
+  in {
+    programs.vscode = {
+      enable = true;
+      profiles.default = {
+        extensions = with pkgs.vscode-extensions; [
+          # Theme
+          config.flake.packages.${system}.vscode-moegi-theme
+          pkief.material-icon-theme
+
+          # Language Support
+          jnoortheen.nix-ide
+          rust-lang.rust-analyzer
+          ziglang.vscode-zig
+          ms-python.vscode-pylance
+          ms-vscode.cpptools-extension-pack
+          llvm-vs-code-extensions.vscode-clangd
+          tamasfe.even-better-toml
+
+          # Quality of Life
+          mkhl.direnv
+          github.vscode-github-actions
+          config.flake.packages.${system}.vscode-gutter-preview
+        ];
+
+        userSettings = {
+          "update.mode" = "none";
+
+          "workbench.colorTheme" = "Moegi Dark Vitesse";
+          "workbench.iconTheme" = "material-icon-theme";
+
+          "editor.tabSize" = 2;
+          "editor.minimap.enabled" = false;
+          "editor.fontFamily" = "JetBrainsMono Nerd Font";
+          "editor.fontLigatures" = "'calt', 'zero'";
+
+          "explorer.compactFolders" = false;
+
+          "window.titleBarStyle" = "custom";
+
+          "nix.enableLanguageServer" = true;
+          "nix.serverPath" = "nil";
+          "nix.serverSettings.nil" = {
+            "diagnostics" = {
+              "ignored" = [
+                # "unused_binding"
+                "unused_with"
+              ];
+            };
           };
-          "nix-darwin" = {
-            "expr" = "(builtins.getFlake \"github:kaan-w/nix-dotfiles\").darwinConfigurations.darwin.options";
-          };
+
+          "C_Cpp.intelliSenseEngine" = "disabled";
+          "C_Cpp.errorSquiggles" = "disabled";
+          "clangd.arguments" = [
+            "--clang-tidy"
+            "--background-index"
+            "--completion-style=detailed"
+            "--query-driver=/nix/store/*/bin/*clang*"
+          ];
+
+          "zig.zls.enabled" = "on";
         };
-      };
-      "nix.hiddenLanguageServerErrors" = [
-        "textDocument/definition"
-      ];
-      "[nix]" = {
-        "editor.defaultFormatter" = "jnoortheen.nix-ide";
-        "editor.formatOnPaste" = false;
-        "editor.formatOnSave" = false;
       };
     };
   };

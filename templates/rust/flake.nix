@@ -1,35 +1,43 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    naersk = {
-      url = "github:nix-community/naersk";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    rust-flake.url = "github:juspay/rust-flake";
   };
 
   outputs = { flake-parts, ... }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
+      imports = [
+        inputs.rust-flake.flakeModules.default
+        inputs.rust-flake.flakeModules.nixpkgs
+      ];
 
-      perSystem = { pkgs, ... }: let
-        naersk-lib = pkgs.callPackage inputs.naersk {};
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+
+      perSystem = { config, pkgs, ... }: let
+        crane-lib = config.rust-project.crane-lib;
+        cargo-toml = crane-lib.crateNameFromCargoToml { cargoToml = ./Cargo.toml; };
+        pname = cargo-toml.pname;
       in {
-        packages = naersk-lib.buildPackage {
-          src = ./.;
+        packages.default = config.packages.${pname};
+
+        checks = {
+          clippy = config.rust-project.crates.${pname}.crane.outputs.drv.clippy;
         };
 
-        devShells.default = pkgs.mkShellNoCC {
-          buildInputs = with pkgs; [
-            rustc 
-            cargo
-            rustfmt
-            clippy
+        devShells.default = crane-lib.devShell {
+          packages = with pkgs; [
+            nixd
+            nil
           ];
-          
-          env.RUST_SRC_PATH = "${pkgs.rustPlatform.rustLibSrc}";
+
+          checks = config.checks;
         };
       };
     };
 }
-

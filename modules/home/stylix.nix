@@ -1,48 +1,45 @@
-{ config, lib, pkgs, inputs, ... }: {
-  imports = [
-    inputs.stylix.homeModules.stylix
-  ];
+{ config, inputs, ... }: {
+  flake.modules.homeManager.stylix = { pkgs, lib, ... }: {
+    imports = [
+      inputs.stylix.homeModules.stylix
+    ];
 
-  stylix = {
-    enable = true;
-    image = pkgs.fetchurl (builtins.elemAt (import ../../assets/wallpapers.nix) 12);
-    polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/grayscale-dark.yaml";
-
-    cursor = lib.mkIf pkgs.stdenv.isLinux {
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
-      size = 24;
-    };
-    iconTheme = lib.mkIf pkgs.stdenv.isLinux {
+    stylix = {
       enable = true;
-      dark = "MoreWaita";
-      package = pkgs.morewaita-icon-theme;
-    };
+      image = pkgs.fetchurl (builtins.elemAt config.flake.wallpapers 2);
+      polarity = "dark";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/mountain.yaml";
 
-    fonts = {
-      monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono Nerd Font";
+      cursor = lib.mkIf pkgs.stdenv.isLinux {
+        name = "Bibata-Modern-Ice";
+        package = pkgs.bibata-cursors;
+        size = 24;
       };
-      emoji = {
-        package = pkgs.noto-fonts-emoji;
-        name = "Noto Color Emoji";
+      icons = lib.mkIf pkgs.stdenv.isLinux {
+        enable = true;
+        dark = "MoreWaita";
+        package = pkgs.morewaita-icon-theme;
       };
-    };
 
-    overlays.enable = false;
+      fonts = {
+        monospace = {
+          package = pkgs.nerd-fonts.jetbrains-mono;
+          name = "JetBrainsMono Nerd Font";
+        };
+        emoji = {
+          package = pkgs.noto-fonts-color-emoji;
+          name = "Noto Color Emoji";
+        };
+      };
 
-    targets = {
-      gtk.extraCss = ''
-        @define-color sidebar_bg_color #${config.lib.stylix.colors.base00};
-        @define-color headerbar_bg_color #${config.lib.stylix.colors.base00};
-      '';
-      vscode.enable = false;
-      zen-browser.enable = false;
-      firefox.enable = false;
-      spicetify.enable = false;
-      nvf.plugin = "mini-base16";
+      overlays.enable = false;
+
+      targets = {
+        vscode.enable = false;
+        zen-browser.enable = false;
+        firefox.enable = false;
+        zed.enable = false;
+      };
     };
   };
 }
