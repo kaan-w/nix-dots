@@ -17,18 +17,32 @@
         load_direnv = "shell_hook";
 
         buffer_font_family = "JetBrainsMono Nerd Font";
-        buffer_font_size = 16.0;
+        buffer_font_size = 16;
         buffer_font_features = {
           calt = true;
           zero = true;
         };
-        ui_font_size = 16.0;
+        ui_font_size = 18;
 
         theme = "Base16 Mountain";
         icon_theme = {
           mode = "dark";
           dark = "Material Icon Theme";
           light = "Material Icon Theme";
+        };
+
+        project_panel = {
+          auto_fold_dirs = false;
+        };
+
+        show_whitespaces = "trailing";
+
+        terminal = {
+          font_family = "JetBrainsMono Nerd Font";
+          font_features = {
+            calt = true;
+            zero = true;
+          };
         };
 
         git = {
@@ -38,9 +52,7 @@
 
         lsp = {
           nil = {
-            binary = {
-              path_lookup = true;
-            };
+            binary.path_lookup = true;
             settings = {
               diagnostics = {
                 ignored = [
@@ -52,9 +64,7 @@
           };
 
           nixd = {
-            binary = {
-              path_lookup = true;
-            };
+            binary.path_lookup = true;
           };
 
           clangd = {
@@ -69,15 +79,11 @@
           };
 
           rust-analyzer = {
-            binary = {
-              path_lookup = true;
-            };
+            binary.path_lookup = true;
           };
 
           zls = {
-            binary = {
-              path_lookup = true;
-            };
+            binary.path_lookup = true;
           };
         };
 
@@ -90,7 +96,7 @@
         agent = {
           default_model = {
             provider = "copilot_chat";
-            model = "claude-opus-4.6";
+            model = "gpt-5.2-codex";
           };
         };
 
