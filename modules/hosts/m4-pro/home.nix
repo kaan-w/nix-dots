@@ -17,6 +17,7 @@
         zen
         starship
         obsidian
+        lazygit
       ];
 
       home = {
