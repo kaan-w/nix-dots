@@ -39,6 +39,7 @@
         zen-browser.enable = false;
         firefox.enable = false;
         zed.enable = false;
+        obsidian.enable = false;
       };
     };
   };

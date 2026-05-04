@@ -16,6 +16,7 @@
         firefox
         zen
         starship
+        obsidian
       ];
 
       home = {

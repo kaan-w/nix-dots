@@ -14,7 +14,7 @@
           { app = "${ghostty-bin}/Applications/Ghostty.app"; }
           { app = "${zed-editor}/Applications/Zed.app"; }
           { app = "/Applications/Zen.app"; }
-          { app = "${notion-app}/Applications/Notion.app"; }
+          { app = "${obsidian}/Applications/Obsidian.app"; }
         ];
 
         wvous-bl-corner = 1;
