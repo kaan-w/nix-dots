@@ -2,6 +2,7 @@
   flake.modules.darwin.macos = { pkgs, user, ... }: {
     security.pam.services.sudo_local.touchIdAuth = true;
 
+    system.startup.chime = false;
     system.primaryUser = user;
     system.defaults = {
       dock = {
