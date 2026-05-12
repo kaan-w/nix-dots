@@ -5,6 +5,9 @@
   # Don't warn before quitting
   "browser.warnOnQuit" = false;
 
+  # Max protection mode for DNS over HTTPS
+  "network.trr.mode" = 3;
+
   # Enable WebRender
   "gfx.webrender.all" = true;
 
