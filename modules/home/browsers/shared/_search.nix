@@ -44,7 +44,13 @@
       definedAliases = [ "@aw" ];
     };
 
+    "Word Hippo (synonym)" = {
+      urls = [ { template = "https://www.wordhippo.com/what-is/another-word-for/{searchTerms}.html"; } ];
+      icon = "https://archive.wordhippo.com/what-is/img/desktop-index/index_hippo_logo.svg";
+      definedAliases = [ "@whs" ];
+    };
+
     "bing".metaData.hidden = true;
-    "wikipedia".metaData.hidden = true;
+    "perplexity".metaData.hidden = true;
   };
 }
