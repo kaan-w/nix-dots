@@ -1,10 +1,9 @@
 {
   outputs = { nixpkgs, flake-parts, ... }@inputs: let
-    inherit (inputs.nixpkgs.lib.fileset) toList fileFilter;
+    inherit (nixpkgs.lib.fileset) toList fileFilter;
     inherit (nixpkgs.lib) hasPrefix lists;
 
-    import-tree = path:
-      toList (fileFilter (file: (file.hasExt "nix") && !(hasPrefix "_" file.name)) path);
+    import-tree = path: toList (fileFilter (f: f.hasExt "nix" && !(hasPrefix "_" f.name)) path);
   in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
@@ -64,5 +63,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    nixcord.url = "github:FlameFlag/nixcord";
   };
 }

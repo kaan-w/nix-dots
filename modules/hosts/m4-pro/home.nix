@@ -18,6 +18,7 @@
         starship
         obsidian
         lazygit
+        nixcord
       ];
 
       home = {

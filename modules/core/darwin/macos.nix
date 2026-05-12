@@ -16,6 +16,7 @@
           { app = "${zed-editor}/Applications/Zed.app"; }
           { app = "/Applications/Zen.app"; }
           { app = "${obsidian}/Applications/Obsidian.app"; }
+          { app = "${vesktop}/Applications/Vesktop.app"; }
         ];
 
         wvous-bl-corner = 1;
