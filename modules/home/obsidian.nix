@@ -88,6 +88,24 @@
                     }
                   ];
                 }
+                {
+                  "name" = "Reference";
+                  "enabled" = true;
+                  "icon" = "lucide-link";
+                  "match" = "any";
+                  "conditions" = [
+                    {
+                      "source" = "name";
+                      "operator" = "contains";
+                      "value" = "reference";
+                    }
+                    {
+                      "source" = "name";
+                      "operator" = "contains";
+                      "value" = "resource";
+                    }
+                  ];
+                }
               ];
             };
           }
@@ -96,10 +114,12 @@
             settings = {
               "pluginSettings" = {
                 "header" = {
+                  "alwaysDisplayCodeblockLang" = true;
                   "displayCodeBlockIcon" = false;
                 };
                 "codeblock" = {
                   "usePrismHighlight" = true;
+                  "hideFenceLines" = true;
                 };
               };
             };
@@ -116,11 +136,11 @@
               "showGettingStartedBanner" = false;
               "daily" = {
                 "enabled" = true;
-                "folder" = "Periodic/Daily";
+                "folder" = "Scratchpad/Daily";
               };
               "weekly" = {
                 "enabled" = true;
-                "folder" = "Periodic/Weekly";
+                "folder" = "Scratchpad/Weekly";
               };
             };
           }
