@@ -18,6 +18,7 @@
           ms-vscode.cpptools-extension-pack
           llvm-vs-code-extensions.vscode-clangd
           tamasfe.even-better-toml
+          myriad-dreamin.tinymist
 
           # Quality of Life
           mkhl.direnv

@@ -11,6 +11,7 @@
         "toml"
         "git-firefly"
         "zig"
+        "typst"
       ];
 
       userSettings = {
@@ -84,6 +85,13 @@
 
           zls = {
             binary.path_lookup = true;
+          };
+
+          tinymist = {
+            binary.path_lookup = true;
+            initialization_options = {
+              preview.background.enabled = true;
+            };
           };
         };
 
