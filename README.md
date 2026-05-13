@@ -18,7 +18,7 @@ sudo nixos-rebuild switch --flake ./nix-dots
   <summary><strong>Darwin</strong></summary>
   
 ```sh
-curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+curl -fsSL https://install.determinate.systems/nix | sh -s -- install --prefer-upstream-nix
 xcode-select --install
 softwareupdate --install-rosetta --agree-to-license
 git clone https://github.com/kaan-w/nix-dots.git
@@ -36,6 +36,7 @@ nix flake init -t github:kaan-w/nix-dots#<name>
   <tr>
     <th align="left">rust</th>
     <th align="left">zig</th>
+    <th align="left">typst</th>
   <tr>
   <td valign="top">
     <pre>
@@ -57,9 +58,33 @@ nix flake init -t github:kaan-w/nix-dots#<name>
 ├── build.zig.zon
 └── flake.nix</pre>
   </td>
+  <td valign="top">
+    <pre>
+├── .envrc
+├── flake.nix
+└── main.typ</pre>
+  </td>
 </table>
 
 ## Packages
-
+<details>
+  <summary><strong>obsidian plugins</strong></summary>
+  
+- `obsidian-calendar`
+- `obsidian-codeblock-customizer`
+- `obsidian-git`
+- `obsidian-iconic`
+- `obsidian-iconize`
+- `obsidian-minimal-settings`
+- `obsidian-minimal-theme`
+- `obsidian-no-more-flickering-inline-math`
+- `obsidian-periodic-notes`
+- `obsidian-tag-wrangler`
+- `obsidian-typst-mate`
+</details>
+<details>
+  <summary><strong>vscode extensions</strong></summary>
+  
 - `vscode-gutter-preview`
 - `vscode-moegi-theme`
+</details>
