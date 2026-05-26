@@ -1,14 +1,15 @@
 { config, inputs, ... }: {
   flake.lib.mkHost = { host, system }: let
-    user = "kaanw";
-
     pkgs = import inputs.nixpkgs {
       inherit system;
       config.allowUnfree = true;
     };
 
+    user = "kaanw";
+    wallpaper = pkgs.fetchurl (builtins.elemAt config.flake.wallpapers 3);
+
     specialArgs = {
-      inherit user host;
+      inherit user host wallpaper;
     };
 
     commonHomeManagerModule = {

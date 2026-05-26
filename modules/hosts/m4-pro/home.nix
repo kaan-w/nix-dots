@@ -1,5 +1,5 @@
 { config, inputs, ... }: {
-  flake.modules.darwin.m4-pro = { pkgs, user, ... }: {
+  flake.modules.darwin.m4-pro = { pkgs, user, wallpaper, ... }: {
     home-manager.users.${user} = {
       imports = with config.flake.modules.homeManager; [
         bat
@@ -28,11 +28,9 @@
           notion-app
         ];
 
-        activation.setWallpaper = inputs.home-manager.lib.hm.dag.entryAfter [ "writeBoundary" ] (let
-          wallpaper = pkgs.fetchurl (builtins.elemAt config.flake.wallpapers 2);
-        in ''
+        activation.setWallpaper = inputs.home-manager.lib.hm.dag.entryAfter [ "writeBoundary" ] ''
           $DRY_RUN_CMD ${pkgs.desktoppr}/bin/desktoppr ${wallpaper}
-        '');
+        '';
 
         stateVersion = "26.05";
       };

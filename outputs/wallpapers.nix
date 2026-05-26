@@ -12,5 +12,13 @@
       url = "https://w.wallhaven.cc/full/5y/wallhaven-5yzd29.png";
       hash = "sha256-eONc0GuGt2WdA4NEMj2rEvZtSxMdxrpTSXzvGT0qNIg=";
     }
+    {
+      url = "https://w.wallhaven.cc/full/e8/wallhaven-e89l8k.jpg";
+      hash = "sha256-vTxb7yEavo7+v8VSQstXaS15KwPJiL4qJuYTvcdjurU=";
+    }
+    {
+      url = "https://w.wallhaven.cc/full/3q/wallhaven-3qwx1v.jpg";
+      hash = "sha256-OTHyHblVbtbehA+7jvMnOi4hic80eB9Wo+hzFvShGTY=";
+    }
   ];
 }
