@@ -74,6 +74,13 @@
           DSDontWriteNetworkStores = true;
           DSDontWriteUSBStores = true;
         };
+
+        "com.apple.symbolichotkeys" = {
+          AppleSymbolicHotKeys = {
+            "60".enabled = true;
+            "61".enabled = true;
+          };
+        };
       };
     };
   };
