@@ -29,7 +29,7 @@
           commonHomeManagerModule
         ];
       }
-    else
+    else if system == "aarch64-darwin" || system == "x86_64-darwin" then
       inputs.nix-darwin.lib.darwinSystem {
         inherit system pkgs specialArgs;
 
@@ -39,5 +39,7 @@
 
           config.flake.modules.darwin.${host}
         ];
-      };
+      }
+    else
+      throw "Unsupported system";
 }
