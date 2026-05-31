@@ -29,7 +29,7 @@
         ];
 
         activation.setWallpaper = inputs.home-manager.lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-          $DRY_RUN_CMD ${pkgs.desktoppr}/bin/desktoppr ${wallpaper}
+          $DRY_RUN_CMD ${lib.getExe pkgs.desktoppr} ${wallpaper}
         '';
 
         stateVersion = "26.05";
