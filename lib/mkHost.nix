@@ -34,24 +34,10 @@
         inherit system pkgs specialArgs;
 
         modules = [
-          config.flake.modules.darwin.${host}
-
-          inputs.home-manager.darwinModules.home-manager
+          inputs.home-manager.darwinModules.default
           commonHomeManagerModule
 
-          inputs.nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              enable = true;
-              enableRosetta = true;
-              inherit (specialArgs) user;
-              mutableTaps = false;
-            };
-          }
-          # Optional: Align homebrew taps config with nix-homebrew
-          ({ config, ... }: {
-            homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
-          })
+          config.flake.modules.darwin.${host}
         ];
       };
 }
