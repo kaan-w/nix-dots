@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.modules.homeManager.nixcord = { user, lib, pkgs, ... }: {
+  flake.modules.homeManager.nixcord = { user, ... }: {
     imports = [
       inputs.nixcord.homeModules.nixcord
     ];
