@@ -104,6 +104,11 @@
                       "operator" = "contains";
                       "value" = "resource";
                     }
+                    {
+                      "source" = "name";
+                      "operator" = "contains";
+                      "value" = "link";
+                    }
                   ];
                 }
               ];
