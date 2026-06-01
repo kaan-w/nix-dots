@@ -11,6 +11,7 @@
         zsh
         git
         stylix
+        noctalia
       ];
 
       home = {
