@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, inputs, ... }: {
   flake.modules.nixos.iso = { pkgs, ... }: {
     imports = [
       config.flake.modules.generic.nix
@@ -14,7 +14,11 @@
     };
   };
 
-  perSystem = {
-    packages.iso = config.flake.nixosConfigurations.iso.config.system.build.images."iso-installer";
+  perSystem = { system, ... }: {
+    packages.iso = (inputs.nixpkgs.lib.nixosSystem {
+      inherit system;
+
+      modules = [ config.flake.modules.nixos.iso ];
+    }).config.system.build.images."iso-installer";
   };
 }

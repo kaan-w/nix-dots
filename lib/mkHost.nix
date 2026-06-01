@@ -1,5 +1,5 @@
 { config, inputs, ... }: {
-  flake.lib.mkHost = { host, system, iso ? false }: let
+  flake.lib.mkHost = { host, system }: let
     pkgs = import inputs.nixpkgs {
       inherit system;
       config.allowUnfree = true;
@@ -24,7 +24,7 @@
 
         modules = [
           config.flake.modules.nixos.${host}
-        ] ++ pkgs.lib.optionals (!iso) [
+
           inputs.disko.nixosModules.default
           inputs.preservation.nixosModules.default
 
@@ -37,10 +37,10 @@
         inherit system pkgs specialArgs;
 
         modules = [
+          config.flake.modules.darwin.${host}
+
           inputs.home-manager.darwinModules.default
           commonHomeManagerModule
-
-          config.flake.modules.darwin.${host}
         ];
       }
     else
