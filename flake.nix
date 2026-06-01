@@ -28,6 +28,13 @@
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    preservation.url = "github:nix-community/preservation";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -64,6 +71,9 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    nixcord.url = "github:FlameFlag/nixcord";
+    nixcord = {
+      url = "github:FlameFlag/nixcord";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

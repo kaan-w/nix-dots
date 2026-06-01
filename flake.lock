@@ -85,6 +85,26 @@
         "type": "github"
       }
     },
+    "disko": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1780048612,
+        "narHash": "sha256-Md/eOK5OjmvvHc2H52pLZe4zpP4XyfiS5vHqfRCz2HU=",
+        "owner": "nix-community",
+        "repo": "disko",
+        "rev": "caa775cf67bfdc47f940edd96c975b5016df9059",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "disko",
+        "type": "github"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -321,7 +341,9 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts_2",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "nixpkgs-nixcord": "nixpkgs-nixcord"
       },
       "locked": {
@@ -340,18 +362,15 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1777428379,
-        "narHash": "sha256-ypxFOeDz+CqADEQNL72haqGjvZQdBR5Vc7pyx2JDttI=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "755f5aa91337890c432639c60b6064bb7fe67769",
-        "type": "github"
+        "lastModified": 1777954456,
+        "narHash": "sha256-qeRNZKcA0igTdRVnBe6hyo49CqxME92s4G8Sr78ARJw=",
+        "rev": "549bd84d6279f9852cae6225e372cc67fb91a4c1",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre992384.549bd84d6279/nixexprs.tar.xz"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-25.11",
-        "repo": "nixpkgs",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
       }
     },
     "nixpkgs-lib": {
@@ -400,19 +419,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1777954456,
-        "narHash": "sha256-qeRNZKcA0igTdRVnBe6hyo49CqxME92s4G8Sr78ARJw=",
-        "rev": "549bd84d6279f9852cae6225e372cc67fb91a4c1",
-        "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre992384.549bd84d6279/nixexprs.tar.xz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
-      }
-    },
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts_3",
@@ -459,8 +465,24 @@
         "type": "github"
       }
     },
+    "preservation": {
+      "locked": {
+        "lastModified": 1757436102,
+        "narHash": "sha256-mMI9IanU+Xw+pVogD2oT0I2kTmvz2Un/Apc5+CwUpEY=",
+        "owner": "nix-community",
+        "repo": "preservation",
+        "rev": "93416f4614ad2dfed5b0dcf12f27e57d27a5ab11",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "preservation",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
+        "disko": "disko",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
@@ -468,8 +490,9 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixcord": "nixcord",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "nur": "nur",
+        "preservation": "preservation",
         "stylix": "stylix",
         "zen-browser": "zen-browser"
       }

@@ -1,5 +1,5 @@
 { config, inputs, ... }: {
-  flake.lib.mkHost = { host, system }: let
+  flake.lib.mkHost = { host, system, iso ? false }: let
     pkgs = import inputs.nixpkgs {
       inherit system;
       config.allowUnfree = true;
@@ -24,8 +24,11 @@
 
         modules = [
           config.flake.modules.nixos.${host}
+        ] ++ pkgs.lib.optionals (!iso) [
+          inputs.disko.nixosModules.default
+          inputs.preservation.nixosModules.default
 
-          inputs.home-manager.nixosModules.home-manager
+          inputs.home-manager.nixosModules.default
           commonHomeManagerModule
         ];
       }

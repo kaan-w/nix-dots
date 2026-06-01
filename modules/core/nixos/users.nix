@@ -3,6 +3,7 @@
     users.users.${user} = {
       extraGroups = [ "networkmanager" "wheel" ];
       isNormalUser = true;
+      initialPassword = "";
       shell = pkgs.zsh;
     };
 
