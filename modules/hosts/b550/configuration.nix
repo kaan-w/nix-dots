@@ -8,6 +8,7 @@
       bluetooth
       pipewire
       users
+      sudo
     ];
 
     # https://wiki.nixos.org/wiki/AMD_GPU#Basic_Setup
