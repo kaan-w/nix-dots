@@ -1,9 +1,15 @@
 {
   flake.modules.nixos.users = { pkgs, user, ... }: {
+    users.mutableUsers = false;
+
+    users.users."root" = {
+      initialPassword = "12345";
+    };
+
     users.users.${user} = {
-      extraGroups = [ "networkmanager" "wheel" ];
       isNormalUser = true;
-      initialPassword = "";
+      extraGroups = [ "networkmanager" "wheel" ];
+      initialPassword = "12345";
       shell = pkgs.zsh;
     };
 
