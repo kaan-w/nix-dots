@@ -9,6 +9,7 @@
         tilesize = 48;
         magnification = true;
         largesize = 54;
+        mru-spaces = false;
         show-recents = false;
         minimize-to-application = true;
         persistent-apps = with pkgs; [
