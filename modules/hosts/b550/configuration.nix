@@ -9,6 +9,7 @@
       pipewire
       users
       sudo
+      disko
     ];
 
     # https://wiki.nixos.org/wiki/AMD_GPU#Basic_Setup

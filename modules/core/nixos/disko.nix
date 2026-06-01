@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.b550 = {
+  flake.modules.nixos.disko = {
     fileSystems."/nix".neededForBoot = true;
     fileSystems."/persistent".neededForBoot = true;
 
