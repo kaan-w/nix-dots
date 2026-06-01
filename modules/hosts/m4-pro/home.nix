@@ -1,5 +1,5 @@
 { config, inputs, ... }: {
-  flake.modules.darwin.m4-pro = { pkgs, user, wallpaper, ... }: {
+  flake.modules.darwin.m4-pro = { pkgs, lib, user, wallpaper, ... }: {
     home-manager.users.${user} = {
       imports = with config.flake.modules.homeManager; [
         bat
