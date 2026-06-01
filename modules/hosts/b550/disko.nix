@@ -1,6 +1,7 @@
 {
   flake.modules.nixos.b550 = {
     fileSystems."/nix".neededForBoot = true;
+    fileSystems."/persistent".neededForBoot = true;
 
     disko.devices = {
       nodev."/" = {
