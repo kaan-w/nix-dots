@@ -5,13 +5,19 @@
         nh
         direnv
         bat
-        vscode
         zoxide
         ghostty
         zsh
         git
         stylix
         noctalia
+        zen
+        fastfetch
+        starship
+        obsidian
+        nixcord
+        lazygit
+        zed
       ];
 
       home = {
