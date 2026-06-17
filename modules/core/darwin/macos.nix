@@ -1,9 +1,14 @@
 {
   flake.modules.darwin.macos = { pkgs, user, ... }: {
     security.pam.services.sudo_local.touchIdAuth = true;
+    system.primaryUser = user;
 
     system.startup.chime = false;
-    system.primaryUser = user;
+    system.keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToEscape = true;
+    };
+
     system.defaults = {
       dock = {
         tilesize = 48;
