@@ -11,6 +11,7 @@
       sudo
       disko
       preservation
+      steam
     ];
 
     # https://wiki.nixos.org/wiki/AMD_GPU#Basic_Setup

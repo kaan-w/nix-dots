@@ -1,0 +1,18 @@
+{
+  flake.modules.nixos.steam = {
+    programs.steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+    };
+  };
+
+  flake.custom.persist = {
+    home.directories = [
+      ".local/share/applications"
+      ".local/share/icons/hicolor"
+      ".local/share/Steam"
+    ];
+  };
+}
