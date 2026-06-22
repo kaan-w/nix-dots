@@ -4,6 +4,7 @@
       enable = true;
       extraConfig = ''
         Defaults lecture=never
+        Defaults pwfeedback
       '';
     };
   };
