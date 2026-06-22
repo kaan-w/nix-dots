@@ -34,6 +34,7 @@
 
         project_panel = {
           auto_fold_dirs = false;
+          dock = "left";
         };
 
         show_whitespaces = "trailing";
