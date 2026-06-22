@@ -4,4 +4,10 @@
     hardware.bluetooth.enable = true;
     hardware.bluetooth.powerOnBoot = true;
   };
+
+  flake.custom.persist = {
+    root.directories = [
+      "/var/lib/bluetooth"
+    ];
+  };
 }

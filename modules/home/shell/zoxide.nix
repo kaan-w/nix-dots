@@ -6,4 +6,10 @@
       options = [ "--cmd cd" ];
     };
   };
+
+  flake.custom.persist = {
+    home.directories = [
+      ".local/share/zoxide"
+    ];
+  };
 }

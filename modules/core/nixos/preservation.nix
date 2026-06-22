@@ -34,7 +34,9 @@
       preserveAt."/persistent" = {
         commonMountOptions = [ "x-gvfs-hide" ];
 
-        inherit (cfg.root) directories;
+        directories = [
+          "/var/log"
+        ] ++ cfg.root.directories;
         inherit (cfg.root) files;
 
         users.${user} = {

@@ -66,4 +66,11 @@
       };
     };
   };
+
+  flake.custom.persist = {
+    home.directories = [
+      ".vscode"
+      ".config/Code"
+    ];
+  };
 }
