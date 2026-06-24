@@ -1,4 +1,4 @@
-{ config, inputs, ... }: {
+{ inputs, ... }: {
   flake.modules.homeManager.stylix = { pkgs, lib, wallpaper, ... }: {
     imports = [
       inputs.stylix.homeModules.stylix
@@ -41,6 +41,7 @@
         zed.enable = false;
         obsidian.enable = false;
         nixcord.enable = false;
+        nvf.enable = false;
       };
     };
   };

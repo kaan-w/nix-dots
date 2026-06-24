@@ -18,6 +18,7 @@
         nixcord
         lazygit
         zed
+        nvf
       ];
 
       home = {
