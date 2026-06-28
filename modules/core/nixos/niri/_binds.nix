@@ -1,6 +1,7 @@
 { lib, ... }: {
   wayland.windowManager.niri.settings.binds = {
     "Mod+Return".spawn = [ "ghostty" ];
+    "Mod+Space".spawn = [ "vicinae" "toggle" ];
     "Mod+E".spawn = [ "nautilus" ];
 
     "Ctrl+Space".switch-layout = "next";

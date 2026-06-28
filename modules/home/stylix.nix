@@ -43,6 +43,7 @@
         obsidian.enable = false;
         nixcord.enable = false;
         nvf.enable = false;
+        vicinae.enable = false;
       };
     };
   };

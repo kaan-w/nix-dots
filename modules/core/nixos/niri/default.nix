@@ -6,6 +6,7 @@
 
     programs.niri = {
       enable = true;
+      withUWSM = true;
     };
 
     environment.systemPackages = with pkgs; [

@@ -19,6 +19,7 @@
         lazygit
         zed
         nvf
+        vicinae
       ];
 
       home = {

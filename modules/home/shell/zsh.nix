@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.zsh = { config, ... }: {
+  flake.modules.homeManager.zsh = { config, pkgs, lib, ... }: {
     programs.zsh = {
       enable = true;
       enableCompletion = true;
@@ -15,6 +15,12 @@
       shellAliases = {
         ff = "fastfetch";
       };
+
+      initContent = lib.mkIf pkgs.stdenv.isLinux ''
+        if uwsm check may-start; then
+          exec uwsm start niri-uwsm.desktop
+        fi
+      '';
     };
   };
 }
