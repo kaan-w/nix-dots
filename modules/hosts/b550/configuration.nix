@@ -13,6 +13,8 @@
       preservation
       steam
       dconf
+      niri
+      uwsm
     ];
 
     # https://wiki.nixos.org/wiki/AMD_GPU#Basic_Setup
