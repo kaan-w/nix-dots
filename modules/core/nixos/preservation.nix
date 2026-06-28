@@ -36,11 +36,22 @@
 
         directories = [
           "/var/log"
+          "/var/lib/nixos"
         ] ++ cfg.root.directories;
-        inherit (cfg.root) files;
+
+        files = [
+          "/etc/machine-id"
+        ] ++ cfg.root.files;
 
         users.${user} = {
-          inherit (cfg.home) directories;
+          directories =  [
+            ".ssh"
+            "Documents"
+            "Downloads"
+            "Pictures"
+            "Videos"
+            "Projects"
+          ] ++ cfg.home.directories;
           inherit (cfg.home) files;
         };
       };

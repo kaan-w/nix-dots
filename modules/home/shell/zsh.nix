@@ -23,4 +23,10 @@
       '';
     };
   };
+
+  flake.custom.persist = {
+    home.directories = [
+      ".local/share/zsh"
+    ];
+  };
 }

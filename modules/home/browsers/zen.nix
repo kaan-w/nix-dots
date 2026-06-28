@@ -22,4 +22,11 @@
       };
     };
   };
+
+  flake.custom.persist = {
+    home.directories = [
+      ".config/zen"
+      ".cache/zen"
+    ];
+  };
 }

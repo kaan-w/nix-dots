@@ -39,4 +39,10 @@
       };
     };
   };
+
+  flake.custom.persist = {
+    home.directories = [
+      ".cache/nix"
+    ];
+  };
 }

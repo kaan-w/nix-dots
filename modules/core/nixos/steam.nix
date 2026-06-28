@@ -13,6 +13,8 @@
       ".local/share/applications"
       ".local/share/icons/hicolor"
       ".local/share/Steam"
+
+      ".local/share/Terraria"
     ];
   };
 }
