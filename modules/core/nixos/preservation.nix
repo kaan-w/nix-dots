@@ -38,10 +38,7 @@
           "/var/log"
           "/var/lib/nixos"
         ] ++ cfg.root.directories;
-
-        files = [
-          "/etc/machine-id"
-        ] ++ cfg.root.files;
+        inherit (cfg.root) files;
 
         users.${user} = {
           directories =  [
