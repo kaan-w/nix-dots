@@ -2,7 +2,6 @@
   flake.modules.homeManager.stylix = { pkgs, lib, wallpaper, ... }: {
     imports = [
       inputs.stylix.homeModules.stylix
-      inputs.niri-nix.homeModules.stylix
     ];
 
     stylix = {

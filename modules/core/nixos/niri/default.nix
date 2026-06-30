@@ -17,6 +17,7 @@
     home-manager.users.${user} = {
       imports = [
         inputs.niri-nix.homeModules.default
+        inputs.niri-nix.homeModules.stylix
         (import ./_settings.nix { inherit wallpaper; })
         ./_binds.nix
       ];
