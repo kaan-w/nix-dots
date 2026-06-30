@@ -4,6 +4,9 @@
     "Mod+Space".spawn = [ "vicinae" "toggle" ];
     "Mod+E".spawn = [ "nautilus" ];
 
+    "Mod+B".spawn = [ "zen-beta" ];
+    "Mod+Shift+B".spawn = [ "zen-beta" "--private-window" ];
+
     "Ctrl+Space".switch-layout = "next";
 
     "Mod+Shift+Slash".show-hotkey-overlay = [];
