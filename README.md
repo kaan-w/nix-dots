@@ -5,7 +5,7 @@
 ![nix-darwin](https://img.shields.io/badge/nix--darwin-2a2630?style=flat&logo=apple)
 ![Niri](https://img.shields.io/badge/Niri-2a2630?style=flat&logo=niri&logoColor=D55C44)
 
-## Installation
+## Installation [outdated section, will be updated]
 <details open>
   <summary><strong>NixOS</strong></summary>
   
