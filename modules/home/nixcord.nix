@@ -6,11 +6,9 @@
 
     programs.nixcord = {
       enable = true;
-      inherit user;
 
-      vesktop = {
-        enable = true;
-      };
+      vesktop.enable = true;
+      discord.vencord.enable = true;
     };
   };
 }
