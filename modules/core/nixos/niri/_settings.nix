@@ -30,9 +30,6 @@
       border.width = 4;
       focus-ring.off = [];
 
-      center-focused-column = "on-overflow";
-      always-center-single-column = true;
-
       preset-column-widths._children = [
         { proportion = 0.33333; }
         { proportion = 0.5; }
