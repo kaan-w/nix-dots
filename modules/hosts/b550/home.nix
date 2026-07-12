@@ -29,11 +29,6 @@
           overskride
         ];
 
-        sessionVariables = {
-          # https://wiki.nixos.org/wiki/Visual_Studio_Code#Wayland
-          NIXOS_OZONE_WL = "1";
-        };
-
         stateVersion = "26.05";
       };
     };
