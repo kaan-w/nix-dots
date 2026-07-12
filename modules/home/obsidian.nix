@@ -153,6 +153,7 @@
           { pkg = config.flake.packages.${system}.obsidian-typst-mate; }
           { pkg = config.flake.packages.${system}.obsidian-no-more-flickering-inline-math; }
           { pkg = config.flake.packages.${system}.obsidian-tag-wrangler; }
+          { pkg = config.flake.packages.${system}.obsidian-color-folders-files; }
         ];
       };
     };
