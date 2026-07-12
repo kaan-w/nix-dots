@@ -157,4 +157,11 @@
       };
     };
   };
+
+  flake.custom.persist = {
+    home.directories = [
+      "Obsidian"
+      ".config/obsidian"
+    ];
+  };
 }

@@ -15,4 +15,10 @@
       # jack.enable = true;
     };
   };
+
+  flake.custom.persist = {
+    home.directories = [
+      ".local/state/wireplumber"
+    ];
+  };
 }

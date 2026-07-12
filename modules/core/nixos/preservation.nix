@@ -43,6 +43,7 @@
         users.${user} = {
           directories =  [
             ".ssh"
+            ".local/share/Trash"
             "Documents"
             "Downloads"
             "Pictures"
