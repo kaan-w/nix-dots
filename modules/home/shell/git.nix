@@ -8,9 +8,9 @@
         key = "~/.ssh/id_ed25519.pub";
         signByDefault = true;
       };
-      
+
       settings = {
-        user.name = "kaam-w";
+        user.name = "kaan-w";
         user.email = "105508453+kaan-w@users.noreply.github.com";
 
         init.defaultBranch = "main";
