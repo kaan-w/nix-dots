@@ -13,8 +13,8 @@
 
       imports = lists.flatten [
         flake-parts.flakeModules.modules
-        (import-tree ./lib)
-        (import-tree ./modules)
+        (import-tree ./features)
+        (import-tree ./hosts)
         (import-tree ./outputs)
         (import-tree ./packages)
       ];
@@ -74,11 +74,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -88,11 +83,6 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
-    };
-
-    nixcord = {
-      url = "github:FlameFlag/nixcord";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }
