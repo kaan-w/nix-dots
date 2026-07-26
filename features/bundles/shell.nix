@@ -4,6 +4,7 @@
       bat
       direnv
       fastfetch
+      fzf
       git
       lazygit
       nh
