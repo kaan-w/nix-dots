@@ -16,13 +16,13 @@
 
     "Nixpkgs" = {
       urls = [ { template = "https://search.nixos.org/packages?query={searchTerms}&channel=unstable"; } ];
-      icon = "https://search.nixos.org/favicon-96x96.png";
+      icon = "https://search.nixos.org/images/nixos-logomark-default-gradient-none.svg";
       definedAliases = [ "@np" ];
     };
 
     "NixOS Options" = {
       urls = [ { template = "https://search.nixos.org/options?query={searchTerms}&channel=unstable"; } ];
-      icon = "https://search.nixos.org/favicon-96x96.png";
+      icon = "https://search.nixos.org/images/nixos-logomark-default-gradient-none.svg";
       definedAliases = [ "@no" ];
     };
 
@@ -36,6 +36,12 @@
       urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
       icon = "https://wiki.nixos.org/favicon.ico";
       definedAliases = [ "@nw" ];
+    };
+
+    "Noogle" = {
+      urls = [ { template = "https://noogle.dev/q/?term={searchTerms}"; } ];
+      icon = "https://noogle.dev/favicon.png";
+      definedAliases = [ "@ng" ];
     };
 
     "Arch Wiki" = {
