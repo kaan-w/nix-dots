@@ -1,47 +1,37 @@
-let
-  sharedConfig = {
+{ config, ... }: {
+  flake.modules.homeManager.zsh = {
     programs.zsh = {
       enable = true;
       enableCompletion = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
 
-      histSize = 5000;
+      history = {
+        size = 5000;
+        ignoreAllDups = true;
+        path = "$XDG_DATA_HOME/zsh/zsh_history";
+      };
 
       shellAliases = {
-        "ff" = "fastfetch";
+        ff = "fastfetch";
       };
     };
   };
-in {
+
   flake.modules.nixos.zsh = { pkgs, user, ... }: {
-    imports = [ sharedConfig ];
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      zsh
+      {
+        programs.zsh.initContent = ''
+          if uwsm check may-start; then
+            exec uwsm start niri-uwsm.desktop
+          fi
+        '';
+      }
+    ];
 
-    programs.zsh = {
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-
-      histFile = "$XDG_DATA_HOME/zsh/zsh_history";
-      setOptions = [
-        "HIST_IGNORE_ALL_DUPS"
-      ];
-
-      loginShellInit = ''
-        if uwsm check may-start; then
-          exec uwsm start niri-uwsm.desktop
-        fi
-      '';
-    };
-
+    programs.zsh.enable = true;
     users.users.${user}.shell = pkgs.zsh;
-  };
-
-  flake.modules.darwin.zsh = {
-    imports = [ sharedConfig ];
-
-    programs.zsh = {
-      enableAutosuggestions = true;
-      enableSyntaxHighlighting = true;
-      enableFzfHistory = true;
-    };
   };
 
   flake.custom.persist = {
