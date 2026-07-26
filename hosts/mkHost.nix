@@ -6,10 +6,9 @@
     };
 
     user = "kaanw";
-    wallpaper = pkgs.fetchurl (builtins.elemAt config.flake.wallpapers 3);
 
     specialArgs = {
-      inherit user host wallpaper;
+      inherit user host;
     };
 
     commonHomeManagerModule = {

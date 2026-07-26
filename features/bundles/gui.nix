@@ -5,6 +5,7 @@
       zed-editor
       ghostty
       obsidian
+      wallpaper
     ];
   };
 

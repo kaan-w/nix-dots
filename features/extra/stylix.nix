@@ -1,12 +1,11 @@
 { inputs, ... }: {
-  flake.modules.homeManager.stylix = { pkgs, lib, wallpaper, ... }: {
+  flake.modules.homeManager.stylix = { pkgs, lib, ... }: {
     imports = [
       inputs.stylix.homeModules.stylix
     ];
 
     stylix = {
       enable = true;
-      image = wallpaper;
       polarity = "dark";
       base16Scheme = "${pkgs.base16-schemes}/share/themes/mountain.yaml";
 

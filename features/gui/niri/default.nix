@@ -20,7 +20,6 @@
 
     environment.systemPackages = with pkgs; [
       xwayland-satellite
-      swaybg
       nautilus
     ];
 
@@ -29,11 +28,11 @@
     ];
   };
 
-  flake.modules.homeManager.niri = { wallpaper, ... }: {
+  flake.modules.homeManager.niri = {
     imports = [
       inputs.niri-nix.homeModules.default
       inputs.niri-nix.homeModules.stylix
-      (import ./_settings.nix { inherit wallpaper; })
+      ./_settings.nix
       ./_binds.nix
     ];
 

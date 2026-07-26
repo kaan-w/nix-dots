@@ -1,4 +1,4 @@
-{ wallpaper }: {
+{
   wayland.windowManager.niri.settings = {
     prefer-no-csd = true;
 
@@ -6,10 +6,6 @@
       skip-at-startup = true;
       hide-not-bound = true;
     };
-
-    spawn-at-startup = [
-      [ "swaybg" "-i" "${wallpaper}" ]
-    ];
 
     output = [{
       _args = [ "DP-3" ];
@@ -47,20 +43,16 @@
       background-color = "transparent";
     };
 
-    overview.workspace-shadow.off = [];
+    overview = {
+      backdrop-color = "#000";
+      workspace-shadow.off = [];
+    };
 
     window-rule = [
       {
         geometry-corner-radius = 10;
         draw-border-with-background = false;
         clip-to-geometry = true;
-      }
-    ];
-
-    layer-rule = [
-      {
-        match._props.namespace = "^wallpaper$";
-        place-within-backdrop = true;
       }
     ];
   };
