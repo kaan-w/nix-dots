@@ -5,6 +5,7 @@
       os_bundle
       shell_bundle
 
+      chromium
       preservation
       steam
     ];

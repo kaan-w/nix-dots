@@ -3,19 +3,19 @@
 in {
   force = true;
   packages = with inputs.nur.legacyPackages.${system}.repos.rycee.firefox-addons; [
-    ublock-origin
-    material-icons-for-github
-    terms-of-service-didnt-read
-    wayback-machine
     clearurls
+    istilldontcareaboutcookies
+    material-icons-for-github
+    privacy-badger
+    proton-pass
     return-youtube-dislikes
     sponsorblock
-    privacy-badger
-    istilldontcareaboutcookies
+    terms-of-service-didnt-read
+    ublock-origin
     unpaywall
-    violentmonkey
-    proton-pass
-    windscribe
     videospeed
+    violentmonkey
+    wayback-machine
+    windscribe
   ];
 }
