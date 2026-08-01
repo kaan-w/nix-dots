@@ -1,4 +1,4 @@
-{
+{ config, ... }: {
   flake.modules.homeManager.fastfetch = { lib, host, user, ... }: {
     programs.fastfetch = {
       enable = true;
@@ -94,5 +94,17 @@
         ];
       };
     };
+  };
+
+  flake.modules.nixos.fastfetch = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      fastfetch
+    ];
+  };
+
+  flake.modules.darwin.fastfetch = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      fastfetch
+    ];
   };
 }

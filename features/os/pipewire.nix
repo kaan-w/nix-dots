@@ -14,11 +14,11 @@
       # If you want to use JACK applications, uncomment the following
       # jack.enable = true;
     };
-  };
 
-  flake.custom.persist = {
-    home.directories = [
-      ".local/state/wireplumber"
-    ];
+    custom.persist = {
+      home.directories = [
+        ".local/state/wireplumber"
+      ];
+    };
   };
 }

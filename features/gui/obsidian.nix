@@ -159,10 +159,22 @@
     };
   };
 
-  flake.custom.persist = {
-    home.directories = [
-      "Obsidian"
-      ".config/obsidian"
+  flake.modules.nixos.obsidian = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      obsidian
+    ];
+
+    custom.persist = {
+      home.directories = [
+        "Obsidian"
+        ".config/obsidian"
+      ];
+    };
+  };
+
+  flake.modules.darwin.obsidian = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      obsidian
     ];
   };
 }

@@ -41,18 +41,18 @@
         "PromotionsEnabled" = false;
       };
     };
+
+    custom.persist = {
+      home.directories = [
+        ".config/chromium"
+        ".cache/chromium"
+      ];
+    };
   };
 
   flake.modules.darwin.chromium = {
     home-manager.sharedModules = with config.flake.modules.homeManager; [
       chromium
-    ];
-  };
-
-  flake.custom.persist = {
-    home.directories = [
-      ".config/chromium"
-      ".cache/chromium"
     ];
   };
 }

@@ -32,11 +32,17 @@
 
     programs.zsh.enable = true;
     users.users.${user}.shell = pkgs.zsh;
+
+    custom.persist = {
+      home.directories = [
+        ".local/share/zsh"
+      ];
+    };
   };
 
-  flake.custom.persist = {
-    home.directories = [
-      ".local/share/zsh"
+  flake.modules.darwin.zsh = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      zsh
     ];
   };
 }

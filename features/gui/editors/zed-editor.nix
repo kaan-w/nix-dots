@@ -1,4 +1,4 @@
-{
+{ config, ... }: {
   flake.modules.homeManager.zed-editor = {
     programs.zed-editor = {
       enable = true;
@@ -12,6 +12,7 @@
         "git-firefly"
         "zig"
         "typst"
+        "svelte"
       ];
 
       userSettings = {
@@ -121,9 +122,21 @@
     };
   };
 
-  flake.custom.persist = {
-    home.directories = [
-      ".local/share/zed"
+  flake.modules.nixos.zed-editor = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      zed-editor
+    ];
+
+    custom.persist = {
+      home.directories = [
+        ".local/share/zed"
+      ];
+    };
+  };
+
+  flake.modules.darwin.zed-editor = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      zed-editor
     ];
   };
 }

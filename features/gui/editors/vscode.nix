@@ -67,10 +67,22 @@
     };
   };
 
-  flake.custom.persist = {
-    home.directories = [
-      ".vscode"
-      ".config/Code"
+  flake.modules.nixos.vscode = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      vscode
+    ];
+
+    custom.persist = {
+      home.directories = [
+        ".vscode"
+        ".config/Code"
+      ];
+    };
+  };
+
+  flake.modules.darwin.vscode = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      vscode
     ];
   };
 }

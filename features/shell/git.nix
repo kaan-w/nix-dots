@@ -1,4 +1,4 @@
-{
+{ config, ... }: {
   flake.modules.homeManager.git = {
     programs.git = {
       enable = true;
@@ -17,5 +17,17 @@
         gpg.format = "ssh";
       };
     };
+  };
+
+  flake.modules.nixos.git = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      git
+    ];
+  };
+
+  flake.modules.darwin.git = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      git
+    ];
   };
 }

@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ inputs, config, ... }: {
   flake.modules.homeManager.zen-browser = { pkgs, lib, ... }: {
     imports = [
       inputs.zen-browser.homeModules.beta
@@ -23,10 +23,22 @@
     };
   };
 
-  flake.custom.persist = {
-    home.directories = [
-      ".config/zen"
-      ".cache/zen"
+  flake.modules.nixos.zen-browser = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      zen-browser
+    ];
+
+    custom.persist = {
+      home.directories = [
+        ".config/zen"
+        ".cache/zen"
+      ];
+    };
+  };
+
+  flake.modules.darwin.zen-browser = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      zen-browser
     ];
   };
 }

@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ inputs, config, ... }: {
   flake.modules.homeManager.vicinae = { pkgs, ...}: let
     system = pkgs.stdenv.hostPlatform.system;
   in {
@@ -40,10 +40,16 @@
     };
   };
 
-  flake.custom.persist = {
-    home.directories = [
-      ".local/share/vicinae"
-      ".cache/vicinae"
+  flake.modules.nixos.vicinae = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      vicinae
     ];
+
+    custom.persist = {
+      home.directories = [
+        ".local/share/vicinae"
+        ".cache/vicinae"
+      ];
+    };
   };
 }

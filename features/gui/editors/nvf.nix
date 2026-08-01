@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ inputs, config, ... }: {
   flake.modules.homeManager.nvf = { pkgs, ... }:{
     imports = [
       inputs.nvf.homeManagerModules.default
@@ -21,5 +21,17 @@
         };
       };
     };
+  };
+
+  flake.modules.nixos.nvf = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      nvf
+    ];
+  };
+
+  flake.modules.darwin.nvf = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      nvf
+    ];
   };
 }

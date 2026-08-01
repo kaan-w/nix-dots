@@ -1,4 +1,17 @@
 { inputs, config, ... }: {
+  flake.modules.homeManager.niri = {
+    imports = [
+      inputs.niri-nix.homeModules.default
+      inputs.niri-nix.homeModules.stylix
+      ./_settings.nix
+      ./_binds.nix
+    ];
+
+    wayland.windowManager.niri = {
+      enable = true;
+    };
+  };
+
   flake.modules.nixos.niri = { pkgs, ... }: {
     imports = [
       inputs.niri-nix.nixosModules.default
@@ -13,31 +26,18 @@
       ];
     };
 
-    programs.niri = {
-      enable = true;
-      withUWSM = true;
-    };
-
     environment.systemPackages = with pkgs; [
       xwayland-satellite
       nautilus
     ];
 
-    home-manager.sharedModules = [
-      config.flake.modules.homeManager.niri
-    ];
-  };
-
-  flake.modules.homeManager.niri = {
-    imports = [
-      inputs.niri-nix.homeModules.default
-      inputs.niri-nix.homeModules.stylix
-      ./_settings.nix
-      ./_binds.nix
-    ];
-
-    wayland.windowManager.niri = {
+    programs.niri = {
       enable = true;
+      withUWSM = true;
     };
+
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      niri
+    ];
   };
 }

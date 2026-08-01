@@ -38,15 +38,15 @@
   in {
     flake.modules.nixos.nix = {
       imports = [ sharedConfig ];
+
+      custom.persist = {
+        home.directories = [
+          ".cache/nix"
+        ];
+      };
     };
 
     flake.modules.darwin.nix = {
       imports = [ sharedConfig ];
-    };
-
-    flake.custom.persist = {
-      home.directories = [
-        ".cache/nix"
-      ];
     };
 }

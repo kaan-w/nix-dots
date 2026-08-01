@@ -6,15 +6,15 @@
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
     };
-  };
 
-  flake.custom.persist = {
-    home.directories = [
-      ".local/share/applications"
-      ".local/share/icons/hicolor"
-      ".local/share/Steam"
+    custom.persist = {
+      home.directories = [
+        ".local/share/applications"
+        ".local/share/icons/hicolor"
+        ".local/share/Steam"
 
-      ".local/share/Terraria"
-    ];
+        ".local/share/Terraria"
+      ];
+    };
   };
 }

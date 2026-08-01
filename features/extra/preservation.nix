@@ -1,6 +1,10 @@
-{ lib, config, inputs, ...}: {
-  options.flake.custom = {
-    persist = {
+{ lib, inputs, ...}: {
+  flake.modules.nixos.preservation = { config, user, ... }: {
+    imports = [
+      inputs.preservation.nixosModules.default
+    ];
+
+    options.custom.persist = {
       root = {
         directories = lib.mkOption {
           type = with lib.types; listOf anything;
@@ -23,116 +27,112 @@
         };
       };
     };
-  };
 
-  config.flake.modules.nixos.preservation = { user, ... }: {
-    imports = [
-      inputs.preservation.nixosModules.default
-    ];
-
-    preservation = let
-      cfg = config.flake.custom.persist;
+    config = let
+      cfg = config.custom.persist;
     in {
-      enable = true;
+      preservation = {
+        enable = true;
 
-      preserveAt."/persistent" = {
-        commonMountOptions = [ "x-gvfs-hide" ];
+        preserveAt."/persistent" = {
+          commonMountOptions = [ "x-gvfs-hide" ];
 
-        directories = [
-          "/var/log"
-          "/var/lib/nixos"
-        ] ++ cfg.root.directories;
-        inherit (cfg.root) files;
+          directories = [
+            "/var/log"
+            "/var/lib/nixos"
+          ] ++ cfg.root.directories;
+          inherit (cfg.root) files;
 
-        users.${user} = {
-          directories =  [
-            ".ssh"
-            ".local/share/Trash"
-            "Documents"
-            "Downloads"
-            "Pictures"
-            "Videos"
-            "Projects"
-          ] ++ cfg.home.directories;
-          inherit (cfg.home) files;
+          users.${user} = {
+            directories =  [
+              ".ssh"
+              ".local/share/Trash"
+              "Documents"
+              "Downloads"
+              "Pictures"
+              "Videos"
+              "Projects"
+            ] ++ cfg.home.directories;
+            inherit (cfg.home) files;
+          };
         };
       };
-    };
 
-    fileSystems."/nix".neededForBoot = true;
-    fileSystems."/persistent".neededForBoot = true;
+      fileSystems."/nix".neededForBoot = true;
+      fileSystems."/persistent".neededForBoot = true;
 
-    disko.devices = {
-      nodev."/" = {
-        fsType = "tmpfs";
-        mountOptions = [
-          "defaults"
-          "size=256M"
-          "mode=755"
-        ];
-      };
+      disko.devices = {
+        nodev."/" = {
+          fsType = "tmpfs";
+          mountOptions = [
+            "defaults"
+            "size=256M"
+            "mode=755"
+          ];
+        };
 
-      disk.main = {
-        device = "/dev/nvme0n1";
-        type = "disk";
+        disk.main = {
+          device = "/dev/nvme0n1";
+          type = "disk";
 
-        content = {
-          type = "gpt";
-          partitions = {
-            boot = {
-              name = "boot";
-              size = "1M";
-              type = "EF02";
-            };
-
-            esp = {
-              name = "ESP";
-              size = "1G";
-              type = "EF00";
-
-              content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot";
-                mountOptions = [
-                  "umask=0077"
-                ];
+          content = {
+            type = "gpt";
+            partitions = {
+              boot = {
+                name = "boot";
+                size = "1M";
+                type = "EF02";
               };
-            };
 
-            swap = {
-              name = "swap";
-              size = "4G";
+              esp = {
+                name = "ESP";
+                size = "1G";
+                type = "EF00";
 
-              content = {
-                type = "swap";
-                resumeDevice = true;
+                content = {
+                  type = "filesystem";
+                  format = "vfat";
+                  mountpoint = "/boot";
+                  mountOptions = [
+                    "umask=0077"
+                  ];
+                };
               };
-            };
 
-            root = {
-              name = "root";
-              size = "100%";
+              swap = {
+                name = "swap";
+                size = "4G";
 
-              content = {
-                type = "btrfs";
-                extraArgs = [ "-f" ];
+                content = {
+                  type = "swap";
+                  resumeDevice = true;
+                };
+              };
 
-                subvolumes = {
-                  "/nix" = {
-                    mountpoint = "/nix";
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
-                  };
+              root = {
+                name = "root";
+                size = "100%";
 
-                  "/persistent" = {
-                    mountpoint = "/persistent";
-                    mountOptions = [
-                      "compress=zstd"
-                      "noatime"
-                    ];
+                content = {
+                  type = "btrfs";
+                  extraArgs = [ "-f" ];
+
+                  subvolumes = {
+                    "/nix" = {
+                      mountpoint = "/nix";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+
+                    "/persistent" = {
+                      mountpoint = "/persistent";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
                   };
                 };
               };

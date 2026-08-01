@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ inputs, config, ... }: {
   flake.modules.homeManager.stylix = { pkgs, lib, ... }: {
     imports = [
       inputs.stylix.homeModules.stylix
@@ -43,5 +43,17 @@
         vicinae.enable = false;
       };
     };
+  };
+
+  flake.modules.nixos.stylix = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      stylix
+    ];
+  };
+
+  flake.modules.darwin.stylix = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      stylix
+    ];
   };
 }

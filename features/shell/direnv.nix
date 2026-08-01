@@ -1,4 +1,4 @@
-{
+{ config, ... }: {
   flake.modules.homeManager.direnv = {
     programs.direnv = {
       enable = true;
@@ -14,7 +14,19 @@
     };
   };
 
-  flake.custom.persist = {
-    home.directories = [ ".local/share/direnv" ];
+  flake.modules.nixos.direnv = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      direnv
+    ];
+
+    custom.persist = {
+      home.directories = [ ".local/share/direnv" ];
+    };
+  };
+
+  flake.modules.darwin.direnv = {
+    home-manager.sharedModules = with config.flake.modules.homeManager; [
+      direnv
+    ];
   };
 }

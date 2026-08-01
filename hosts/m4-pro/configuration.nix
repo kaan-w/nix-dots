@@ -6,6 +6,7 @@
       shell_bundle
 
       homebrew
+      stylix
     ];
 
     # https://nix-darwin.github.io/nix-darwin/manual/index.html#opt-homebrew.enable
