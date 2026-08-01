@@ -3,7 +3,6 @@
     home-manager.users.${user} = {
       home = {
         packages = with pkgs; [
-          mas
           nix-prefetch
         ];
 
