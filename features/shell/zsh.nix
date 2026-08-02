@@ -1,5 +1,5 @@
 { config, ... }: {
-  flake.modules.homeManager.zsh = {
+  flake.modules.homeManager.zsh = { config, ... }: {
     programs.zsh = {
       enable = true;
       enableCompletion = true;
@@ -9,7 +9,7 @@
       history = {
         size = 5000;
         ignoreAllDups = true;
-        path = "$XDG_DATA_HOME/zsh/zsh_history";
+        path = "${config.xdg.dataHome}/zsh/zsh_history";
       };
 
       shellAliases = {

@@ -1,5 +1,5 @@
 { inputs, config, ... }: {
-  flake.modules.homeManager.stylix = { pkgs, lib, ... }: {
+  flake.modules.homeManager.stylix = { pkgs, ... }: {
     imports = [
       inputs.stylix.homeModules.stylix
     ];
@@ -8,17 +8,6 @@
       enable = true;
       polarity = "dark";
       base16Scheme = "${pkgs.base16-schemes}/share/themes/mountain.yaml";
-
-      cursor = lib.mkIf pkgs.stdenv.isLinux {
-        name = "Bibata-Modern-Ice";
-        package = pkgs.bibata-cursors;
-        size = 24;
-      };
-      icons = lib.mkIf pkgs.stdenv.isLinux {
-        enable = true;
-        dark = "MoreWaita";
-        package = pkgs.morewaita-icon-theme;
-      };
 
       fonts = {
         monospace = {
@@ -45,9 +34,25 @@
     };
   };
 
-  flake.modules.nixos.stylix = {
+  flake.modules.nixos.stylix = { pkgs, ... }: {
     home-manager.sharedModules = with config.flake.modules.homeManager; [
       stylix
+      {
+        home.pointerCursor.enable = true;
+
+        stylix = {
+          cursor = {
+            name = "Bibata-Modern-Ice";
+            package = pkgs.bibata-cursors;
+            size = 24;
+          };
+          icons = {
+            enable = true;
+            dark = "MoreWaita";
+            package = pkgs.morewaita-icon-theme;
+          };
+        };
+      }
     ];
   };
 

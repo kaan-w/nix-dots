@@ -17,13 +17,15 @@
       };
 
       extensions = with inputs.vicinae-extensions.packages.${system}; [
-        bluetooth
         nix
         zed-recents
         process-manager
         pulseaudio
         player-pilot
         color-converter
+
+        # https://github.com/vicinaehq/extensions/blob/main/flake.nix#L66
+        # bluetooth
       ];
 
       settings = {
