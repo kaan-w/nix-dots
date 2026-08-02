@@ -1,9 +1,8 @@
 { config, ... }: {
-  flake.modules.homeManager.ghostty = { pkgs, ... }: {
+  flake.modules.homeManager.ghostty = {
     programs.ghostty = {
       enable = true;
       enableZshIntegration = true;
-      package = with pkgs; if stdenv.isDarwin then ghostty-bin else ghostty;
 
       settings = {
         window-padding-x = 14;
@@ -22,9 +21,12 @@
     ];
   };
 
-  flake.modules.darwin.ghostty = {
+  flake.modules.darwin.ghostty = { pkgs, ... }: {
     home-manager.sharedModules = with config.flake.modules.homeManager; [
       ghostty
+      {
+        programs.ghostty.package = pkgs.ghostty-bin;
+      }
     ];
   };
 }
