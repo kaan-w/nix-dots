@@ -1,5 +1,5 @@
-{ config, inputs, ... }: {
-  flake.lib.mkHost = { host, system }: let
+{ config, inputs, ... }: let
+  mkHost = { host, system }: let
     pkgs = import inputs.nixpkgs {
       inherit system;
       config.allowUnfree = true;
@@ -43,4 +43,16 @@
       }
     else
       throw "Unsupported system";
+
+  mkHosts = builtins.mapAttrs (
+    host: params: mkHost ({ inherit host; } // params)
+  );
+in {
+  flake.nixosConfigurations = mkHosts {
+    "b550" = { system = "x86_64-linux"; };
+  };
+
+  flake.darwinConfigurations = mkHosts {
+    "m4-pro" = { system = "aarch64-darwin"; };
+  };
 }

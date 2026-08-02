@@ -15,9 +15,12 @@
         flake-parts.flakeModules.modules
         (import-tree ./features)
         (import-tree ./hosts)
-        (import-tree ./outputs)
         (import-tree ./packages)
       ];
+
+      flake.templates = builtins.mapAttrs
+        (name: _: { path = ../templates/${name}; description = ""; })
+        (builtins.readDir ../templates);
 
       perSystem = { pkgs, ... }: {
         devShells.default = import ./shell.nix { inherit pkgs; };
