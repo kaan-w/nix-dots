@@ -27,9 +27,6 @@
   "signon.rememberSignons" = false;
   "signon.autofillForms" = false;
 
-  # Don't show the Zen welcome screen
-  "zen.welcome-screen.seen" = true;
-
   # Open bookmarks in a new tab
   "browser.tabs.loadBookmarksInTabs" = true;
 
