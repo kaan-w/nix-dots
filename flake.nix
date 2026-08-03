@@ -23,7 +23,16 @@
         (builtins.readDir ../templates);
 
       perSystem = { pkgs, ... }: {
-        devShells.default = import ./shell.nix { inherit pkgs; };
+        devShells.default = pkgs.mkShellNoCC {
+          buildInputs = with pkgs; [
+            nixd
+            nil
+          ];
+
+          shellHook = ''
+            git status --short
+          '';
+        };
       };
     };
 
