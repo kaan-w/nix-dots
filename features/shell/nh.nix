@@ -3,7 +3,7 @@
     programs.nh = {
       enable = true;
       osFlake = /home/${user}/Projects/nix-dots;
-      darwinFlake = /Users/${user}/nix-dots;
+      darwinFlake = /Users/${user}/Projects/nix-dots;
 
       clean = {
         enable = true;
