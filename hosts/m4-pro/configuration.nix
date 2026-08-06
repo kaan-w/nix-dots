@@ -7,6 +7,8 @@
 
       homebrew
       stylix
+      neovim
+      neovide
     ];
 
     # https://nix-darwin.github.io/nix-darwin/manual/index.html#opt-homebrew.enable

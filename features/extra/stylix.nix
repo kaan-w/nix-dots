@@ -28,7 +28,6 @@
         firefox.enable = false;
         zed.enable = false;
         obsidian.enable = false;
-        nvf.enable = false;
         vicinae.enable = false;
       };
     };

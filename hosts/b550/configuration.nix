@@ -9,6 +9,8 @@
       preservation
       steam
       stylix
+      neovim
+      neovide
     ];
 
     # https://wiki.nixos.org/wiki/AMD_GPU#Basic_Setup
