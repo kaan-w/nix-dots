@@ -13,7 +13,6 @@
 
     # https://nix-darwin.github.io/nix-darwin/manual/index.html#opt-homebrew.enable
     homebrew = {
-      brews = [ "cava" ];
       casks = [
         "raycast"
         "proton-pass"
@@ -21,6 +20,7 @@
         "excalidrawz"
         "aldente"
         "cloudflare-warp"
+        "vorssaint"
       ];
       masApps = {
         "TestFlight" = 899247664;
