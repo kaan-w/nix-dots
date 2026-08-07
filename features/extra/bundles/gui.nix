@@ -5,6 +5,7 @@
       zed-editor
       niri
       ghostty
+      localsend
       obsidian
       vicinae
       wallpaper
@@ -16,6 +17,7 @@
       zen-browser
       zed-editor
       ghostty
+      localsend
       obsidian
       wallpaper
     ];
