@@ -26,9 +26,15 @@
       definedAliases = [ "@no" ];
     };
 
+    "Nix Darwin Options" = {
+      urls = [ { template = "https://nixsearch.thekoppe.com/darwin?q={searchTerms}"; } ];
+      icon = "https://github.com/user-attachments/assets/0e1a77ac-6739-4153-bd24-abd3a5e143f5";
+      definedAliases = [ "@nd" ];
+    };
+
     "Home Manager Options" = {
       urls = [ { template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master"; } ];
-      icon = "https://home-manager-options.extranix.com/images/favicon.png";
+      icon = "https://home-manager.dev/favicon.ico";
       definedAliases = [ "@hm" ];
     };
 
