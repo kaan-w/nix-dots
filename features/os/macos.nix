@@ -27,10 +27,10 @@
           { app = "${hm-apps}/Obsidian.app"; }
         ];
 
-        wvous-bl-corner = 1;
-        wvous-br-corner = 1;
-        wvous-tl-corner = 1;
-        wvous-tr-corner = 1;
+        wvous-bl-corner = 4; # Desktop
+        wvous-br-corner = 13; # Lock Screen
+        wvous-tl-corner = 3; # Application Windows
+        wvous-tr-corner = 1; # Disabled
       };
 
       finder = {
