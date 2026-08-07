@@ -1,5 +1,5 @@
 {
-  flake.modules.darwin.macos = { pkgs, ... }: {
+  flake.modules.darwin.macos = { user, ... }: {
     security.pam.services.sudo_local.touchIdAuth = true;
 
     system.startup.chime = false;
@@ -17,12 +17,14 @@
         mru-spaces = false;
         show-recents = false;
         minimize-to-application = true;
-        persistent-apps = with pkgs; [
-          { app = "${ghostty-bin}/Applications/Ghostty.app"; }
-          { app = "${zed-editor}/Applications/Zed.app"; }
-          { app = "/Applications/Zen.app"; }
-          { app = "${obsidian}/Applications/Obsidian.app"; }
-          { app = "${vesktop}/Applications/Vesktop.app"; }
+
+        persistent-apps = let
+          hm-apps = "/Users/${user}/Applications/Home Manager Apps";
+        in [
+          { app = "${hm-apps}/Ghostty.app"; }
+          { app = "${hm-apps}/Zed.app"; }
+          { app = "${hm-apps}/Zen Browser (Beta).app"; }
+          { app = "${hm-apps}/Obsidian.app"; }
         ];
 
         wvous-bl-corner = 1;

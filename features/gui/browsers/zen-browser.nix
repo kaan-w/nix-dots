@@ -6,7 +6,6 @@
 
     programs.zen-browser = {
       enable = true;
-      package = lib.mkIf pkgs.stdenv.isDarwin (lib.mkForce null);
 
       policies = import ./shared/_policies.nix;
 

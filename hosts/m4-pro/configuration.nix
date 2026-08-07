@@ -16,7 +16,6 @@
       brews = [ "cava" ];
       casks = [
         "raycast"
-        "zen"
         "proton-pass"
         "ente-auth"
         "excalidrawz"
