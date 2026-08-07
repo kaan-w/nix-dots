@@ -26,7 +26,7 @@
         programs.desktoppr = {
           enable = true;
           settings = {
-            picture = "https://w.wallhaven.cc/full/9o/wallhaven-9o833w.jpg";
+            picture = "https://w.wallhaven.cc/full/gw/wallhaven-gw2mel.png";
           };
         };
       }
